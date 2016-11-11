@@ -45,6 +45,7 @@ if [ -n "$WERCKER_GCS_WEBSITE_DEPLOY_MAPPED_BUCKETS" ]; then
   do
     IFS=':' read -r -a mapping <<< $bucket
     echo "Synchronizing gs://${mapping[0]} into $WERCKER_GCS_WEBSITE_DEPLOY_DIR/${mapping[1]}"
+    mkdir -p $WERCKER_GCS_WEBSITE_DEPLOY_DIR/${mapping[1]}
     gsutil -m rsync -r -d gs://${mapping[0]} $WERCKER_GCS_WEBSITE_DEPLOY_DIR/${mapping[1]}
   done
 fi
