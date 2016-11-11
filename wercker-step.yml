@@ -5,6 +5,9 @@ properties:
   bucket:
     type: string
     required: true
+  mapped_buckets:
+    type: string
+    required: false
   project:
     type: string
     required: true
