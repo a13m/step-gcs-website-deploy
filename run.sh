@@ -39,12 +39,11 @@ debug 'Starting deployment'
 # bucket bbb into bar/ under the deploy directory
 #
 if [ -n "$WERCKER_GCS_WEBSITE_DEPLOY_MAPPED_BUCKETS" ]; then
-  # declare -A bucket_map
   IFS=',' read -r -a bucket_list <<< "$WERCKER_GCS_WEBSITE_DEPLOY_MAPPED_BUCKETS"
   for bucket in "${bucket_list[@]}"
   do
     IFS=':' read -r -a mapping <<< $bucket
-    echo gsutil -m rsync -r -d gs://${mapping[0]} $WERCKER_GCS_WEBSITE_DEPLOY_DIR/${mapping[1]}
+    gsutil -m rsync -r -d gs://${mapping[0]} $WERCKER_GCS_WEBSITE_DEPLOY_DIR/${mapping[1]}
   done
 fi
 
