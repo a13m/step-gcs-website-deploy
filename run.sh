@@ -51,6 +51,7 @@ if [ -n "$WERCKER_GCS_WEBSITE_DEPLOY_MAPPED_BUCKETS" ]; then
 fi
 
 gsutil -m rsync -r -d $WERCKER_GCS_WEBSITE_DEPLOY_DIR gs://$WERCKER_GCS_WEBSITE_DEPLOY_BUCKET
+gsutil setmeta -r -h "Cache-Control:public, max-age=300"  gs://$WERCKER_GCS_WEBSITE_DEPLOY_BUCKET
 # This causes problems with cache control headers, so stop gzipping things.
 # gsutil -m cp -r -z html,css,js,xml,txt,json,map,svg $WERCKER_GCS_WEBSITE_DEPLOY_DIR/* gs://$WERCKER_GCS_WEBSITE_DEPLOY_BUCKET
 
