@@ -2,7 +2,7 @@ function install_gcs() {
 debug 'Installing gsutil'
 curl -sO https://storage.googleapis.com/pub/gsutil_4.38.tar.gz
 rm -rf $WERCKER_CACHE_DIR/gsutil
-tar xfz gsutil.tar.gz -C $WERCKER_CACHE_DIR
+tar xfz gsutil_4.38.tar.gz -C $WERCKER_CACHE_DIR
 }
 
 export PATH=${PATH}:$WERCKER_CACHE_DIR/gsutil
