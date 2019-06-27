@@ -8,9 +8,6 @@ tar xfz gsutil.tar.gz -C $WERCKER_CACHE_DIR
 export PATH=${PATH}:$WERCKER_CACHE_DIR/gsutil
 if ! type gsutil > /dev/null; then
   install_gcs
-elif [ `gsutil version|awk '{print $3}'|tr -d "\\r\\n"` != \
-     `curl -sI https://storage.googleapis.com/pub/gsutil.tar.gz|grep x-goog-meta-gsutil_version|awk '{print $2}'|tr -d "\\r\\n"` ]; then
-  install_gcs
 fi
 
 debug 'setting gsutil'
