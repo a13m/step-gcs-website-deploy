@@ -1,5 +1,5 @@
 name: gcs-website-deploy
-version: 1.0.8
+version: 1.0.9
 description: Deploy website to Google Cloud Storage
 properties:
   bucket:
